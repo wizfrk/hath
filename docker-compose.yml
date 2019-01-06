@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  hath:
+    build: .
+    container_name: hath
+    volumes:
+      - ${CONFIG}/hath/cache:/hath/cache
+      - ${DOWNLOADS}/hath/:/hath/download
+      - ${CONFIG}/hath/data:/hath/data
+      - ${CONFIG}/hath/log:/hath/log
+      - /tmp/:/hath/temp
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
