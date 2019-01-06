@@ -4,12 +4,20 @@ services:
   hath:
     build: .
     container_name: hath
-    volumes:
-      - ${CONFIG}/hath/cache:/hath/cache
-      - ${DOWNLOADS}/hath/:/hath/download
-      - ${CONFIG}/hath/data:/hath/data
-      - ${CONFIG}/hath/log:/hath/log
-      - /tmp/:/hath/temp
     restart: unless-stopped
-    ports:
-      - "6969:6969"
+    ports: <port>:6969
+    environment:
+      # User and Group ID's - https://kb.iu.edu/d/adwf
+      - PUID=1001
+      - PGID=1001
+      # Time Zone - https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      - TZ=Europe/London
+      # H@H Client ID and Key - https://e-hentai.org/hentaiathome.php
+      - HATH_CLIENT_ID=12345
+      - HATH_CLIENT_KEY=ABcdefG1H2iJklmNopq3
+    volumes:
+      - </path/to/hath/cache>:/hath/cache
+      - </path/to/hath/downloads>:/hath/download
+      - </path/hath/data>:/hath/data
+      - </path/to/hath/logs>:/hath/log
+      - </path/to/tmp/>:/hath/temp
