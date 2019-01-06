@@ -20,7 +20,7 @@ For more info including requirements and technical data see: https://ehwiki.org/
 ```
 docker run \
   --name hath \
-  --net=host \
+  --ports: <port>:6969 \
   -v /path/to/your/hath/cache:/hath/cache \
   -v /path/to/your/hath/data:/hath/data \
   -v /path/to/your/hath/download>:/hath/download \
